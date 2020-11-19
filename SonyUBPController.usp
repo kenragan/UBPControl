@@ -1,0 +1,270 @@
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+
+#OUTPUT_SHIFT 4
+#CATEGORY "4" // Device Interface
+             
+
+#USER_SIMPLSHARP_LIBRARY "SonyUBPControl"
+
+STRING_PARAMETER PlayerIpAddress[15], PlayerMacAddress[17];
+#BEGIN_PARAMETER_PROPERTIES PlayerIpAddress
+  PropValidUnits = UnitString;
+#END_PARAMETER_PROPERTIES
+#BEGIN_PARAMETER_PROPERTIES PlayerMacAddress
+  PropValidUnits = UnitString;
+  PropDefaultValue = "AA:01:BB:10:CC:11";
+#END_PARAMETER_PROPERTIES
+
+
+DIGITAL_INPUT _SKIP_,_SKIP_,_SKIP_,_SKIP_;
+DIGITAL_INPUT Register, RegisterSubmit;                                
+DIGITAL_INPUT PowerOn, PowerOff;
+DIGITAL_INPUT Confirm, Up, Down, RightPad, LeftPad, Home, Options, ReturnButton;
+DIGITAL_INPUT Num1, Num2, Num3, Num4, Num5, Num6, Num7, Num8, Num9, Num0;
+DIGITAL_INPUT Power, Display, Audio, SubTitle, Favorites, Yellow, Blue, Red, Green;
+DIGITAL_INPUT Play, Stop, Pause, Rewind, Forward, Prev, Next, Replay, Advance;
+DIGITAL_INPUT Angle, TopMenu, PopUpMenu, Eject, Karaoke, Netflix, Mode3D;
+
+STRING_INPUT RegPinCode[4];
+STRING_OUTPUT PinCode;
+
+
+PlayerControl controller;
+
+Threadsafe PUSH Register
+{
+	controller.RegisterInit();
+}
+
+Threadsafe PUSH RegisterSubmit
+{
+	PinCode = RegPinCode;
+	controller.RegisterSubmit(RegPinCode);
+}
+
+Threadsafe PUSH PowerOn
+{
+	controller.PowerOn();
+}
+
+Threadsafe PUSH PowerOff
+{
+	controller.SendCommand("PowerOff");
+}
+
+Threadsafe PUSH Confirm
+{
+	controller.SendCommand("Confirm");
+}
+
+Threadsafe PUSH Up
+{
+	controller.SendCommand("Up");
+}
+
+Threadsafe PUSH Down
+{
+	controller.SendCommand("Down");
+}
+
+Threadsafe PUSH RightPad
+{
+	controller.SendCommand("Right");
+}
+
+Threadsafe PUSH LeftPad
+{
+	controller.SendCommand("Left");
+}
+
+Threadsafe PUSH Home
+{
+	controller.SendCommand("Home");
+}
+
+Threadsafe PUSH Options
+{
+	controller.SendCommand("Options");
+}
+
+Threadsafe PUSH ReturnButton
+{
+	controller.SendCommand("Return");
+}
+
+Threadsafe PUSH Num1
+{
+	controller.SendCommand("Num1");
+}
+
+Threadsafe PUSH Num2
+{
+	controller.SendCommand("Num2");
+}
+
+Threadsafe PUSH Num3
+{
+	controller.SendCommand("Num3");
+}
+
+Threadsafe PUSH Num4
+{
+	controller.SendCommand("Num4");
+}
+
+Threadsafe PUSH Num5
+{
+	controller.SendCommand("Num5");
+}
+
+Threadsafe PUSH Num6
+{
+	controller.SendCommand("Num6");
+}
+
+Threadsafe PUSH Num7
+{
+	controller.SendCommand("Num7");
+}
+
+Threadsafe PUSH Num8
+{
+	controller.SendCommand("Num8");
+}
+
+Threadsafe PUSH Num9
+{
+	controller.SendCommand("Num9");
+}
+
+Threadsafe PUSH Num0
+{
+	controller.SendCommand("Num0");
+}
+
+Threadsafe PUSH Display
+{
+	controller.SendCommand("Display");
+}
+
+Threadsafe PUSH Audio
+{
+	controller.SendCommand("Audio");
+}
+
+Threadsafe PUSH SubTitle
+{
+	controller.SendCommand("SubTitle");
+}
+
+Threadsafe PUSH Favorites
+{
+	controller.SendCommand("Favorites");
+}
+
+Threadsafe PUSH Yellow
+{
+	controller.SendCommand("Yellow");
+}
+
+Threadsafe PUSH Blue
+{
+	controller.SendCommand("Blue");
+}
+
+Threadsafe PUSH Red
+{
+	controller.SendCommand("Red");
+}
+
+Threadsafe PUSH Green
+{
+	controller.SendCommand("Green");
+}
+
+Threadsafe PUSH Play
+{
+	controller.SendCommand("Play");
+}
+
+Threadsafe PUSH Stop
+{
+	controller.SendCommand("Stop");
+}
+
+Threadsafe PUSH Pause
+{
+	controller.SendCommand("Pause");
+}
+
+Threadsafe PUSH Rewind
+{
+	controller.SendCommand("Rewind");
+}
+
+Threadsafe PUSH Forward
+{
+	controller.SendCommand("Forward");
+}
+
+Threadsafe PUSH Prev
+{
+	controller.SendCommand("Prev");
+}
+
+Threadsafe PUSH Next
+{
+	controller.SendCommand("Next");
+}
+
+Threadsafe PUSH Replay
+{
+	controller.SendCommand("Replay");
+}
+
+Threadsafe PUSH Advance
+{
+	controller.SendCommand("Advance");
+}
+
+Threadsafe PUSH Angle
+{
+	controller.SendCommand("Angle");
+}
+
+Threadsafe PUSH TopMenu
+{
+	controller.SendCommand("TopMenu");
+}
+
+Threadsafe PUSH PopUpMenu
+{
+	controller.SendCommand("PopUpMenu");
+}
+
+Threadsafe PUSH Eject
+{
+	controller.SendCommand("Eject");
+}
+
+Threadsafe PUSH Karaoke
+{
+	controller.SendCommand("Karaoke");
+}
+
+Threadsafe PUSH Netflix
+{
+	controller.SendCommand("Netflix");
+}
+
+Threadsafe PUSH Mode3D
+{
+	controller.SendCommand("Mode3D");
+}
+
+FUNCTION main()
+{
+	controller.Initialize(PlayerIpAddress, PlayerMacAddress);
+}
