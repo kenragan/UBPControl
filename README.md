@@ -7,3 +7,5 @@ To register the module with the Player -
 3. Watch for the PIN code that appears on the TV/Display
 4. Send the PIN code to the module via 'RegPinCode'
 5. Signal 'RegisterSubmit' on the module
+
+https://github.com/kenragan/UBPControl
