@@ -1,6 +1,7 @@
 # UBPControl
 Input the player's IP address and MAC address in the module
-To Register the module with the player -
+
+To register the module with the Player -
 1. Manually Power on Player and TV/Display connected to the Player
 2. Signal 'Register' on the module
 3. Watch for the PIN code that appears on the TV/Display
